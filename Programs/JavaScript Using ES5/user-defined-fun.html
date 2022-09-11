@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/JavaScript">
+        function info() {
+            alert("This is user-defined function")
+            alert("function no passing parameter and no return type")
+        }
+        function add(a,b){
+            var sum = a+b;
+            alert("Sum of two number is "+sum);
+            alert("function passing parameter but no return type")
+        }
+        function empInfo(id,name,salary,desg){
+            if(desg=="Manager"){
+                return salary+5000;
+            }else if(desg=="Developer"){
+                return salary+3000;
+            }else {
+                return "No Bonus only salary "+salary;
+            }
+        }
+        function getNumber() {
+                return 100;
+        }
+        //info();
+    </script>
+</head>
+<body>
+    <script type="text/JavaScript">
+        //info();
+        //add(100,200);
+        //var result = empInfo(1,"Raj",20000,"Tester");
+        //alert("In main script "+result);
+        var result = getNumber();
+        alert(result);
+    </script>
+</body>
+</html>
