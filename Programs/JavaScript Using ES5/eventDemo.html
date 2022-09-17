@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/JavaScript">
+        function info() {
+            alert("Event generated");
+        }
+        function readValue() {
+            // read text field value using name attribute 
+            // var fname = document.getElementsByName("name")[0].value;
+            // var lname = document.getElementsByName("name")[1].value;
+            // var fullname = fname +" "+lname
+            // alert("Your name is "+fullname);
+
+            // read text field value using id attribute 
+            var fname = document.getElementById("n1").value;
+            var lname = document.getElementById("n2").value;
+            var fullname = fname+" "+lname;
+            document.getElementById("n3").value = fullname;
+            document.getElementById("n4").innerHTML=fullname;
+            document.getElementById("n1").value=""      // reset 
+            document.getElementById("n2").value="";     // reset 
+            //alert("your name is "+fullname)
+            //var h1TagValue = document.getElementsByTagName("h1")[0].innerHTML;    // read the value of h1 tag 
+            var h1TagValue = document.getElementByTagId("abc").innerHTML;           // read the value of h1 tag 
+            alert(h1TagValue);
+        }
+    </script>
+</head>
+<body>
+    <h1 id="abc">Welcome to JavaScript Training</h1>
+   <input type="button" value="click here" onclick="info()"/> 
+   <hr/>
+   fName :<input type="text" name="name" id="n1"/><br/>
+   lname :<input type="text" name="name" id="n2"/><br/>
+   Full Name :<input type="text" name="result" id="n3" readonly/><br/>
+   <div id="n4">
+
+   </div>
+   <input type="button" value="Read Value" onclick="readValue()"/>
+</body>
+</html>
