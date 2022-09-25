@@ -12,7 +12,7 @@ document.write("Hi<br/>")
 
 
  
-    setInterval(()=> {
+    var a = setInterval(()=> {
         if(j%2==0){
             document.getElementById("d3").style.color="RED"
             document.getElementById("d3").setAttribute("","");
@@ -22,4 +22,8 @@ document.write("Hi<br/>")
         
         j++;
     },1000);
+
+    function stop() {
+        clearInterval(a);
+    }
 document.write("How r you<br/>")
