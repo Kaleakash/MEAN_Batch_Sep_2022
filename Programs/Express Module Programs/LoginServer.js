@@ -1,6 +1,10 @@
 let express = require("express");
+let bodyParser = require("body-parser");
 let app = express();
 
+
+// add middleware module 
+app.use(bodyParser.urlencoded({extended:true}));    // it use to enable post data from reqeust body 
 
 app.get("/",(request,response)=> {
    // response.sendFile("index.html");
@@ -24,4 +28,30 @@ app.get("/aboutus",(request,response)=> {
  app.get("/login",(request,response)=> { 
     response.sendFile(__dirname+"\\login.html");
  })
+
+ // checking login details using get method data send through URL using query concept 
+ app.get("/checkUser",(request,response)=> { 
+    let emaildid = request.query.emailid;
+    let password = request.query.password;
+    if(emaildid=="raj@gmail.com" && password=="123"){
+        response.send("<h2>Successfully login</h2>");
+    }else {
+        response.send("<h2>Failure try once again</h2>");
+    }
+ })
+
+ // checking login details using post method data send through body part of request. 
+ app.post("/checkUser",(request,response)=> { 
+    let emaildid = request.body.emailid
+    let password = request.body.password;
+        console.log(emaildid+" "+password);         // node js console 
+    if(emaildid=="raj@gmail.com" && password=="123"){
+        response.send("<h2>Successfully login</h2>");
+    }else {
+        response.send("<h2>Failure try once again</h2>");
+    }
+ })
+
 app.listen(9090,()=>console.log("Server running on port number 9090"));
+
+
