@@ -1,7 +1,7 @@
 let express = require("express");
 let bodyParser = require("body-parser");
 let fs = require("fs");
-const { response } = require("express");
+let alert = require("alert");
 let app = express();
 
 
@@ -41,19 +41,22 @@ app.get("/aboutus",(request,response)=> {
  app.get("/checkUser",(request,response)=> { 
     let emaildid = request.query.emailid;
     let password = request.query.password;
-    if(emaildid=="raj@gmail.com" && password=="123"){
+    let loginInfo = JSON.parse(fs.readFileSync("LoginDetails.json"));
+    let result = loginInfo.find(ll=>ll.emaildid==emaildid && ll.password==password);
+    if(result != undefined){
         response.send("<h2>Successfully login</h2>");
     }else {
         response.send("<h2>Failure try once again</h2>");
     }
  })
-
  // checking login details using post method data send through body part of request. 
  app.post("/checkUser",(request,response)=> { 
     let emaildid = request.body.emailid
     let password = request.body.password;
         console.log(emaildid+" "+password);         // node js console 
-    if(emaildid=="raj@gmail.com" && password=="123"){
+    let loginInfo = JSON.parse(fs.readFileSync("LoginDetails.json"));
+    let result = loginInfo.find(ll=>ll.emaildid==emaildid && ll.password==password);
+    if(result != undefined){
         response.send("<h2>Successfully login</h2>");
     }else {
         response.send("<h2>Failure try once again</h2>");
@@ -67,15 +70,18 @@ app.post("/register",(request,response)=> {
     let login  = {"emaildid":emaildidValue,"password":passwordValue};
 
     let loginInfo = JSON.parse(fs.readFileSync("LoginDetails.json"));
-
     let result = loginInfo.find(ll=>ll.emaildid==emaildidValue);
 
     if(result==undefined){
         loginInfo.push(login);
         fs.writeFileSync("LoginDetails.json",JSON.stringify(loginInfo));
-        response.send("Account created successfully");
+        //response.send("Account created successfully");
+        alert("Account Created successfully")
+        response.sendFile(__dirname+"\\login.html");
     }else {
-        response.send("Account Can't create because EmailId must be unique");
+        //response.send("Account Can't create because EmailId must be unique");
+        alert("Account didn't create email id must be unique");
+        response.sendFile(__dirname+"\\login.html");
     }
 });
 
