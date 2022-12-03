@@ -1,5 +1,7 @@
 let express = require("express");
 let bodyParser = require("body-parser");
+let fs = require("fs");
+const { response } = require("express");
 let app = express();
 
 
@@ -29,6 +31,12 @@ app.get("/aboutus",(request,response)=> {
     response.sendFile(__dirname+"\\login.html");
  })
 
+
+ app.get("/signUp",(request,response)=> { 
+    response.sendFile(__dirname+"\\signUp.html");
+ })
+
+
  // checking login details using get method data send through URL using query concept 
  app.get("/checkUser",(request,response)=> { 
     let emaildid = request.query.emailid;
@@ -51,6 +59,26 @@ app.get("/aboutus",(request,response)=> {
         response.send("<h2>Failure try once again</h2>");
     }
  })
+
+app.post("/register",(request,response)=> {
+    let emaildidValue = request.body.emailid
+    let passwordValue = request.body.password;
+
+    let login  = {"emaildid":emaildidValue,"password":passwordValue};
+
+    let loginInfo = JSON.parse(fs.readFileSync("LoginDetails.json"));
+
+    let result = loginInfo.find(ll=>ll.emaildid==emaildidValue);
+
+    if(result==undefined){
+        loginInfo.push(login);
+        fs.writeFileSync("LoginDetails.json",JSON.stringify(loginInfo));
+        response.send("Account created successfully");
+    }else {
+        response.send("Account Can't create because EmailId must be unique");
+    }
+});
+
 
 app.listen(9090,()=>console.log("Server running on port number 9090"));
 
