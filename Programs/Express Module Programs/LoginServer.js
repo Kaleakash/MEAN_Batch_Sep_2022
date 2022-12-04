@@ -44,7 +44,8 @@ app.get("/aboutus",(request,response)=> {
     let loginInfo = JSON.parse(fs.readFileSync("LoginDetails.json"));
     let result = loginInfo.find(ll=>ll.emaildid==emaildid && ll.password==password);
     if(result != undefined){
-        response.send("<h2>Successfully login</h2>");
+	 //response.sendFile(__dirname+"\\Home.html");	// emailid 
+        response.send("<h2>Successfully login</h2>");	//  home.html (static web page)
     }else {
         response.send("<h2>Failure try once again</h2>");
     }
