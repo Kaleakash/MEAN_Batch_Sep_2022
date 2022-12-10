@@ -93,7 +93,40 @@ app.post("/storeProduct",(request,response)=> {
     }
 })
 
+// patch method : it is use to update existing resource 
+// http://localhost:3000/updateProductPrice 
+// {"pid":1,"price":58000}
+// {"pid":6,"price":32000}
+app.patch("/updateProductPrice",(request,response)=> {
+    
+    let product  = request.body;                        // 
+    let index = products.findIndex(p=>p.pid==product.pid);
+    if(index>=0){
+        products[index].price = product.price;          // replace old product price by new produt price 
+        response.json({"msg":"Product details updated successfully"});
+    }else {
+        response.json({"msg":"Product not present"});
+    }
+})
 
 
+// delete method : it is use to delete the resource 
+// http://localhost:3000/deleteProductById pass the id using path param 
+// http://localhost:3000/deleteProductById/1
+// http://localhost:3000/deleteProductById/100
+
+app.delete("/deleteProductById/:pid",(request,response)=> {
+    let productid  = request.params.pid;                        // 
+    let index = products.findIndex(p=>p.pid==productid);
+    if(index>=0){
+        products.splice(index,1);                   // splice 1st parameter index position and 2nd paramater 
+                                                    // from that index position number of records to delete.
+        response.json({"msg":"Product details deleted successfully"});
+    }else {
+        response.json({"msg":"Product not present"});
+    }
+})
 
 app.listen(portnumber,()=>console.log(`The server running on port nubmer ${portnumber}`));
+
+
