@@ -16,7 +16,7 @@ let findAllProductById = (pid)=> {
 
 let deleteProductById=(pid)=> {
     let productid = eval(pid);
-    return dbCollection.CollectionInformation().deleleOne({_id:productid});
+    return dbCollection.CollectionInformation().deleteOne({_id:productid});
 }
 let updateProductPrice = (product)=> {
     return dbCollection.CollectionInformation().updateOne({_id:product._id},{$set:{price:product.price}});

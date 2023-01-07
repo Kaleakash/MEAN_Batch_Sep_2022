@@ -30,12 +30,24 @@ let findProductById = async (request,response)=> {
 let deleteProductById = async (request,response)=> {
     let productid = request.params.pid;
     let result = await productRepository.deleteProductById(productid);
-    response.json(result);
+   // response.json(result);
+   if(result.deletedCount>0){
+        response.send("Record deleted successfully")
+   }else {
+        response.send("Record not present")
+   }
 }
 let updateProductPrice = async (request,response)=> {
     let product = request.body;     // extract data from body part.
     let result = await productRepository.updateProductPrice(product);
-    response.json(result);
+   // response.json(result);
+   if(result.modifiedCount>0){
+        response.send("Record updated successfully")
+   }else if(result.matchedCount>0){
+        response.send("Record present but old price and new price both are same")
+   }else {
+        response.send("Record didn't update because record not exists")
+   }
 }
 module.exports={storeProduct,findProduct,findProductById,deleteProductById,updateProductPrice}
 
