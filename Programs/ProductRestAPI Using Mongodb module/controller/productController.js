@@ -26,4 +26,16 @@ let findProductById = async (request,response)=> {
             response.json(result);
     }
 }
-module.exports={storeProduct,findProduct,findProductById}
+
+let deleteProductById = async (request,response)=> {
+    let productid = request.params.pid;
+    let result = await productRepository.deleteProductById(productid);
+    response.json(result);
+}
+let updateProductPrice = async (request,response)=> {
+    let product = request.body;     // extract data from body part.
+    let result = await productRepository.updateProductPrice(product);
+    response.json(result);
+}
+module.exports={storeProduct,findProduct,findProductById,deleteProductById,updateProductPrice}
+

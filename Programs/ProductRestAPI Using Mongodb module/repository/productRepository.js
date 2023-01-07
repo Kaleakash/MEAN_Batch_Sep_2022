@@ -14,4 +14,12 @@ let findAllProductById = (pid)=> {
     return dbCollection.CollectionInformation().find({_id:eval(pid)}).toArray(); //toArray convert all data in array format. 
 }
 
-module.exports = {storeProduct,findAllProduct,findAllProductById}         // it export storeProduct function in another file we can import it or link it.  
+let deleteProductById=(pid)=> {
+    let productid = eval(pid);
+    return dbCollection.CollectionInformation().deleleOne({_id:productid});
+}
+let updateProductPrice = (product)=> {
+    return dbCollection.CollectionInformation().updateOne({_id:product._id},{$set:{price:product.price}});
+}
+module.exports = {storeProduct,findAllProduct,findAllProductById,deleteProductById,updateProductPrice}         
+// it export storeProduct function in another file we can import it or link it.  

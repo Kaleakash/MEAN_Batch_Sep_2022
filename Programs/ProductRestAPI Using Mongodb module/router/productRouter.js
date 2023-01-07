@@ -14,4 +14,11 @@ router.get("/findProductInfo",productController.findProduct);
 // http://localhost:3000/api/products/findProductById/1
 router.get("/findProductById/:pid",productController.findProductById);
 
+// http://localhost:3000/api/products/deleteProductById/1
+// http://localhost:3000/api/products/deleteProductById/100
+router.delete("/deleteProductById/:pid",productController.deleteProductById);
+
+// http://localhost:3000/api/products/updateProductPrice :... 
+router.put("/updateProductPrice",productController.updateProductPrice);
+
 module.exports=router;      // router reference export 
