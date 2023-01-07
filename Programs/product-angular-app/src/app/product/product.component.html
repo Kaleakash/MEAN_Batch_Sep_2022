@@ -1,0 +1,11 @@
+<div>
+    <input type="button" value="load all product"
+    (click)="loadAllProductDetails()"/>
+
+    <hr/>
+
+    <div *ngFor="let product of products" style="display: inline-block;">
+        <img src={{product.url}} width="100px" height="100px"/>
+        <span>PName :{{product.pname}} Price : {{product.price}}</span>
+    </div>
+</div>
