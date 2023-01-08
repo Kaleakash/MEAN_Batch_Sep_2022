@@ -1,5 +1,19 @@
 <div>
     
+    <!-- <form [formGroup]="loginRef" (ngSubmit)="signIn()">
+        <label>Email</label>
+        <input type="email" name="email" formControlName="email"/><br/>
+        <label>Password</label>
+        <input type="password" name="password" formControlName="password"/><br/>
+        <label>TypeOfUser</label>
+        <input type="radio" name="typeofuser" formControlName="typeofuser" value="Admin"/>Admin
+        <input type="radio" name="typeofuser" formControlName="typeofuser" value="Customer"/>Customer
+        <br/>
+        <input type="submit" value="signIn"/>
+        <input type="reset" value="reset"/>
+    </form> -->
+
+    <hr/>
     <form [formGroup]="productRef" (ngSubmit)="storeProduct()">
         <label>PId</label>
         <input type="number" name="_id" formControlName="_id"/><br/>

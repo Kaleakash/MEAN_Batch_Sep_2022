@@ -14,8 +14,17 @@ export class ProductComponent implements OnInit{    // OnInit is a interface whi
     _id:new FormControl(),
     pname:new FormControl(),
     price:new FormControl(),
-    url:new FormControl()
+    url:new FormControl(),
   });
+  // loginRef = new FormGroup({
+  //   email:new FormControl(),
+  //   password:new FormControl(),
+  //   typeofuser:new FormControl()
+  // })
+  // signIn() {
+  //     let login = this.loginRef.value;
+  //     console.log(login);  
+  // }
   products:Array<Product>=[];
   constructor(public ps:ProductService){    // DI for ProductService 
   }
