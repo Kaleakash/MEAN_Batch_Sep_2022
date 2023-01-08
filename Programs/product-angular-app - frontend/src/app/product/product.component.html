@@ -15,8 +15,14 @@
     <span style="color:red">{{storeMsg}}</span>
     <hr/>
 
-    <div *ngFor="let product of products" style="display: inline-block;">
+    <div>
+    <div *ngFor="let product of products" style="display: inline-block;border: 1px solid red;margin: 10px;">
         <img src={{product.url}} width="100px" height="100px"/>
-        <span>PName :{{product.pname}} Price : {{product.price}}</span>
+        <br/>
+        <div>
+            <span>PName :{{product.pname}}<br/> Price : {{product.price}}</span><br/>
+            <input type="button" value="delete rec" (click)="deleteRec(product._id)"/>
+        </div>
+    </div>
     </div>
 </div>

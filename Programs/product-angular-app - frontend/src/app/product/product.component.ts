@@ -36,8 +36,9 @@ export class ProductComponent implements OnInit{    // OnInit is a interface whi
   }
 
   storeProduct(){
-      let product = this.productRef.value;
+      let product = this.productRef.value;    // extracting four values from form group in json format. 
       //console.log(product);
+
       this.ps.storeProduct(product).subscribe({
         next:(result:any)=> {
           //console.log(result)
@@ -47,10 +48,26 @@ export class ProductComponent implements OnInit{    // OnInit is a interface whi
         complete:()=>
         {
           this.loadAllProductDetails();
-          console.log("done!")
+          console.log(" store done!")
         }
       })
 
       this.productRef.reset();
   }
+
+  deleteRec(id:any) {
+    //console.log(id)
+    this.ps.deleteProduct(id).subscribe({
+      next:(result:any)=> {
+          console.log(result);
+      },
+      error:(error:any)=>console.log(error),
+      complete:()=>{
+        this.loadAllProductDetails();
+        console.log("delete done!")
+      }
+    })
+  }
 }
+
+
