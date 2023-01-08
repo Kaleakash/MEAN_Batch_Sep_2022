@@ -22,6 +22,20 @@ export class ProductService {
 
   // those product array in json format we are converting into Product array model and and return to component. 
   findAllProduct():Observable<Product[]>{
-      return this.http.get<Product[]>("http://localhost:3000/api/products/findProductInfo");
+      return this.http.get<Product[]>("http://localhost:3000/api/products/findProductInfo",{responseType:"json"});
+  }
+
+  storeProduct(product:any):Observable<string> {
+    return this.http.post("http://localhost:3000/api/products/storeProduct",product,{responseType:'text'});
   }
 }
+
+
+
+
+
+
+
+
+
+

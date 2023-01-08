@@ -1,0 +1,22 @@
+<div>
+    
+    <form [formGroup]="productRef" (ngSubmit)="storeProduct()">
+        <label>PId</label>
+        <input type="number" name="_id" formControlName="_id"/><br/>
+        <label>PName</label>
+        <input type="text" name="pname" formControlName="pname"/><br/>
+        <label>Price</label>
+        <input type="number" name="price" formControlName="price"/><br/>
+        <label>URL</label>
+        <input type="url" name="url" formControlName="url"/><br/>
+        <input type="submit" value="store product"/>
+        <input type="reset" value="reset"/>
+    </form>
+    <span style="color:red">{{storeMsg}}</span>
+    <hr/>
+
+    <div *ngFor="let product of products" style="display: inline-block;">
+        <img src={{product.url}} width="100px" height="100px"/>
+        <span>PName :{{product.pname}} Price : {{product.price}}</span>
+    </div>
+</div>
