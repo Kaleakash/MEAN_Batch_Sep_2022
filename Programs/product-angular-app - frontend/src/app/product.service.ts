@@ -32,6 +32,10 @@ export class ProductService {
   deleteProduct(pid:any):Observable<string> {
     return this.http.delete(this.baseUrl+"/deleteProductById/"+pid,{responseType:'text'});
   }
+
+  updateProduct(product:any):Observable<string> {
+    return this.http.put(this.baseUrl+"/updateProductPrice",product,{responseType:'text'});
+  }
   
 }
 

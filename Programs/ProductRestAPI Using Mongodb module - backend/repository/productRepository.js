@@ -19,7 +19,7 @@ let deleteProductById=(pid)=> {
     return dbCollection.CollectionInformation().deleteOne({_id:productid});
 }
 let updateProductPrice = (product)=> {
-    return dbCollection.CollectionInformation().updateOne({_id:product._id},{$set:{price:product.price}});
+    return dbCollection.CollectionInformation().updateOne({_id:product._id},{$set:{price:product.price,url:product.url}});
 }
 module.exports = {storeProduct,findAllProduct,findAllProductById,deleteProductById,updateProductPrice}         
 // it export storeProduct function in another file we can import it or link it.  

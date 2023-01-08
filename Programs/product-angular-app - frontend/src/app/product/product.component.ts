@@ -25,6 +25,9 @@ export class ProductComponent implements OnInit{    // OnInit is a interface whi
   }
 
   storeMsg:string ="";
+  
+  btn:string ="Store product";
+
   loadAllProductDetails() {
     this.ps.findAllProduct().subscribe({
       next:(data:any)=> {
@@ -36,21 +39,42 @@ export class ProductComponent implements OnInit{    // OnInit is a interface whi
   }
 
   storeProduct(){
-      let product = this.productRef.value;    // extracting four values from form group in json format. 
-      //console.log(product);
+    let product = this.productRef.value;    // extracting four values from form group in json format.       
+      if(this.btn=="Store Product"){
+       
 
-      this.ps.storeProduct(product).subscribe({
-        next:(result:any)=> {
-          //console.log(result)
-          this.storeMsg=result;
-        },
-        error:(error:any)=>console.log(error),
-        complete:()=>
-        {
-          this.loadAllProductDetails();
-          console.log(" store done!")
-        }
-      })
+        this.ps.storeProduct(product).subscribe({
+          next:(result:any)=> {
+            //console.log(result)
+            this.storeMsg=result;
+          },
+          error:(error:any)=>console.log(error),
+          complete:()=>
+          {
+            this.loadAllProductDetails();
+            console.log(" store done!")
+          }
+        })
+
+      }else {
+         // alert("you are going to update the record")
+
+         this.ps.updateProduct(product).subscribe({
+          next:(result:any)=> {
+            //console.log(result)
+            this.storeMsg=result;
+          },
+          error:(error:any)=>console.log(error),
+          complete:()=>
+          {
+            this.loadAllProductDetails();
+            console.log("update done!")
+            this.btn="Store Product"
+          }
+         })
+
+      }
+      
 
       this.productRef.reset();
   }
@@ -67,6 +91,15 @@ export class ProductComponent implements OnInit{    // OnInit is a interface whi
         console.log("delete done!")
       }
     })
+  }
+
+  updateRec(product:any){
+    //console.log(product);
+    this.btn="Update Product";
+    this.productRef.get("_id")?.setValue(product._id);
+    this.productRef.get("pname")?.setValue(product.pname);
+    this.productRef.get("price")?.setValue(product.price);
+    this.productRef.get("url")?.setValue(product.url);
   }
 }
 

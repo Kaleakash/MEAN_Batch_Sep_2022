@@ -9,7 +9,7 @@
         <input type="number" name="price" formControlName="price"/><br/>
         <label>URL</label>
         <input type="url" name="url" formControlName="url"/><br/>
-        <input type="submit" value="store product"/>
+        <input type="submit" [value]="btn"/>
         <input type="reset" value="reset"/>
     </form>
     <span style="color:red">{{storeMsg}}</span>
@@ -22,6 +22,7 @@
         <div>
             <span>PName :{{product.pname}}<br/> Price : {{product.price}}</span><br/>
             <input type="button" value="delete rec" (click)="deleteRec(product._id)"/>
+            <input type="button" value="update rec" (click)="updateRec(product)"/>
         </div>
     </div>
     </div>
