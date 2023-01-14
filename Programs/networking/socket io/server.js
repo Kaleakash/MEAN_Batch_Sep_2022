@@ -14,6 +14,12 @@ io.on("connection",(socket)=> {
 
     // this code is use to receive value from socket.io client 
     // client is key 
+    // array variable with hold 10 information
+    let mm = new Map();
+    mm.set("key1","value1");
+    mm.set("key2","value2");
+    mm.set("key3","value3");
+    mm.set("key4","value4"); 
     socket.on("client",(msg)=> {
         console.log(msg);
     })

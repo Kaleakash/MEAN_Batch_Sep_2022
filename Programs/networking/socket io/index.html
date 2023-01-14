@@ -15,9 +15,15 @@
         socket.on("server",(msg)=> {
             console.log(msg)
         })
+        function sendData() {
+            let data = document.getElementById("name").value;
+            socket.emit("client",data);
+            document.getElementById("name").value=""
+        }
     </script>
 </head>
 <body>
-    
+    <input type="text" id="name"/>
+    <input type="button" value="send" onclick="sendData()"/>
 </body>
 </html>
