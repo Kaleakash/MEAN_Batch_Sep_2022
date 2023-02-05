@@ -29,12 +29,12 @@ function Employee(id,name,age) {
 }
 // user defined object in class style 
 class Customer {
-    constructor(id,name,age,totalPurchase,discount){
+    constructor(id,name,age,totalPurchase){
         this.id = id;
         this.name = name;
         this.age = age;
         this.totalPurchase = totalPurchase;
-        this.discount= discount;
+        this.discount= 0;
     }
     getId(){
         return this.id;
@@ -47,11 +47,11 @@ class Customer {
     }
     getTotalAmount = function() {
             if(this.totalPurchase>=10000){
-                return this.discount = this.totalPurchase+0.10*this.totalPurchase;
+                return this.discount = this.totalPurchase-0.10*this.totalPurchase;
             }else if(this.totalPurchase >=5000){
-                return this.discount = this.totalPurchase+0.05*this.totalPurchase;
+                return this.discount = this.totalPurchase-0.05*this.totalPurchase;
             }else {
-                return this.discount = 0;
+                return this.discount;
             }
     }
 }

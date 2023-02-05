@@ -18,5 +18,9 @@ describe("User defined object testing ",()=> {
         expect(24).toEqual(cust.getAge());
         
     })
+    it("Customer discount testing ",()=> {
+        let cust1 = new Customer(102,"Ajay",24,12000)
+        expect(10800).toEqual(cust1.getTotalAmount());
+    })
 
 })
