@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  rishba-service:
+    image: rishabh301/my-angular-app:1.0
+    ports:
+      - "91:80"
+  akash-service:
+    image: akashkale/my-angular-feb-2023:1.0
+    ports:
+     - "92:80"
