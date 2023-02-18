@@ -1,0 +1,20 @@
+version: '3.7' 
+
+# Define the services/containers to be run
+services:
+  angular: 
+    build: ./product-angular-app - frontend/ 
+    #image: rishabh301/simplilearnmeanstack_angular:1.0
+    ports:
+      - "80:80" 
+  express: 
+    build: ./ProductRestAPI Using Mongodb module - backend/
+    ports:
+      - "3000:3000"  
+    links:
+      - database
+      
+  database: 
+    image: mongo:5 
+    ports:
+      - "27017:27017"

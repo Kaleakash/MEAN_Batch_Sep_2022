@@ -1,5 +1,5 @@
 let mongoClient = require("mongodb").MongoClient;       // load the module and get mongodb reference. 
-let URL = "mongodb://127.0.0.1:27017";                  // this is url 
+let URL = "mongodb://database:27017";                  // this is url 
 
 let dbClient;
 

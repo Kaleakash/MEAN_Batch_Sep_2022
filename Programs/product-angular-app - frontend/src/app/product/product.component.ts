@@ -50,8 +50,7 @@ export class ProductComponent implements OnInit{    // OnInit is a interface whi
   storeProduct(){
     let product = this.productRef.value;    // extracting four values from form group in json format.       
       if(this.btn=="Store Product"){
-       
-
+       alert(" I came here")
         this.ps.storeProduct(product).subscribe({
           next:(result:any)=> {
             //console.log(result)
@@ -66,8 +65,6 @@ export class ProductComponent implements OnInit{    // OnInit is a interface whi
         })
 
       }else {
-         // alert("you are going to update the record")
-
          this.ps.updateProduct(product).subscribe({
           next:(result:any)=> {
             //console.log(result)
