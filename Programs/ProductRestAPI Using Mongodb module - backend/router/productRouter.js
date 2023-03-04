@@ -12,20 +12,20 @@ router.get("/findProductInfo",authToken.verifyToken,productController.findProduc
 
 // http://localhost:3000/api/products/storeProduct
 
-router.post("/storeProduct",productController.storeProduct);
+router.post("/storeProduct",authToken.verifyToken,productController.storeProduct);
 
 
 
 
 // http://localhost:3000/api/products/findProductById/100
 // http://localhost:3000/api/products/findProductById/1
-router.get("/findProductById/:pid",productController.findProductById);
+router.get("/findProductById/:pid",authToken.verifyToken,productController.findProductById);
 
 // http://localhost:3000/api/products/deleteProductById/1
 // http://localhost:3000/api/products/deleteProductById/100
-router.delete("/deleteProductById/:pid",productController.deleteProductById);
+router.delete("/deleteProductById/:pid",authToken.verifyToken,productController.deleteProductById);
 
 // http://localhost:3000/api/products/updateProductPrice :... 
-router.put("/updateProductPrice",productController.updateProductPrice);
+router.put("/updateProductPrice",authToken.verifyToken,productController.updateProductPrice);
 
 module.exports=router;      // router reference export 
