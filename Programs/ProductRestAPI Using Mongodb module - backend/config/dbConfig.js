@@ -1,5 +1,5 @@
 let mongoClient = require("mongodb").MongoClient;       // load the module and get mongodb reference. 
-let URL = "mongodb://database:27017";                  // this is url 
+let URL = "mongodb://127.0.0.1:27017";                  // this is url 
 
 let dbClient;
 
@@ -18,8 +18,8 @@ function connection() {                               // this function connect d
 //     return dbClient.db("mean_batch1").collection(collectionName);
 // }
 
-let CollectionInformation = ()=> {
-    return dbClient.db("mean_batch1").collection("Product");
+let CollectionInformation = (cname)=> {
+    return dbClient.db("mean_batch1").collection(cname);
 }
 
 module.exports = {connection,CollectionInformation}
